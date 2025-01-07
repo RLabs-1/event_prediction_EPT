@@ -1,0 +1,19 @@
+# parsing_config.yaml
+log_pattern:
+  regex: >
+    \[v\s(?P<version>\d+\.\d+\.\d+)/\d+\]>>\s
+    (?P<module>\S+)@(?P<log_level>\w+)\s*\|\s*
+    (?P<timestamp>\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\.\d{3})\((?P<epoch_time>\d+)\)>\s*(?P<message>.*)
+  fields:
+    - version
+    - module
+    - log_level
+    - timestamp
+    - epoch_time
+    - message
+file_paths:
+  log_file: "GeneralLog.log"
+kafka:
+  bootstrap_servers: "localhost:9092" # Kafka bootstrap servers
+  topic: "log_topic"                  # Kafka topic to read logs from
+  group_id: "log_parser_group"        # Kafka consumer group ID
