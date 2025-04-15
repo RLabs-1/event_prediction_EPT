@@ -13,7 +13,11 @@ log_pattern:
     - message
 file_paths:
   log_file: "GeneralLog.log"
+  
 kafka:
-  bootstrap_servers: "localhost:9092" # Kafka bootstrap servers
-  topic: "log_topic"                  # Kafka topic to read logs from
-  group_id: "log_parser_group"        # Kafka consumer group ID
+  broker: kafka:9092
+  port: 9092
+  zookeeper_port: 2181
+
+kafka_ui:
+  port: 8080
